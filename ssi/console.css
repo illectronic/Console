@@ -1,0 +1,44 @@
+th.top-header-cell.col4.sorting_asc, th.top-header-cell.col4.sorting_desc, th.top-header-cell.col4.sorting{
+width:350px !important;
+min-width:350px !important;
+overflow:hidden !important;
+}
+
+
+
+.top-body-cell.col1 {
+width:100px;
+overflow:hidden;
+}
+
+.top-body-cell.col2 {
+width:72px;
+overflow:hidden;
+}
+
+.top-body-cell.col4 {
+width:350px !important;
+min-width:350px !important;
+overflow:hidden !important;
+}
+
+
+
+.top-body-cell.col23 div, .top-body-cell.col24 div {
+height:40px;
+max-height:20px;
+width:600px;
+overflow:hidden;
+} 
+
+.paginate_button{
+font-size:15px !important;
+cursor: pointer !Important; 
+cursor: hand !Important;
+padding:5px;
+}
+
+.redtext
+{
+background:#2AED11;
+}

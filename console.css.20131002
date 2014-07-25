@@ -1,0 +1,54 @@
+
+table
+{
+    border-collapse: collapse;
+}
+.top-outer-container
+{
+    background-color: #ccc;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 300px;
+    bottom: 40px;
+}
+
+.top-inner-container
+{
+    height: 100%;
+    overflow: auto;
+	height:300px;
+}
+
+.top-table-header
+{
+    position: relative;
+}
+.top-table-body
+{
+    overflow: auto;
+}
+
+
+.header-cell
+{
+    background-color: #ccc;
+	color:#000;
+    text-align: left;
+    height: 20px;
+	font-size:0.8em;
+}
+.body-cell 
+{
+    background-color: white;
+    text-align: left;
+	height:25px;
+	line-height:0;
+	border:1px solid #ccc;
+}
+
+.col1 
+{
+    width:81px;
+	min-width:81px;
+}

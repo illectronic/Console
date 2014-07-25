@@ -1,0 +1,624 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dth">
+<!-- saved from url=(0136)file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Novantas Portal: Dashboard</title>
+
+<!-- Tablesorter: theme -->
+<link class="ui-theme" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css">
+<link class="ui-theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.jui.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.default.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.blue.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.green.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.grey.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.ice.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.black-ice.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.dark.css">
+<link class="theme" rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/css/theme.dropbox.css">
+
+<!-- Tablesorter script: required -->
+<script type="text/javascript" src="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/js/jquery.js"></script>
+<script src="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/js/jquery.tablesorter.js"></script>
+<script src="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/tablesorter/js/jquery.tablesorter.widgets.js"></script>
+
+
+<script src="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/ssi/SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/ssi/SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
+<link href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/css/portal.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/css/columns.css" media="screen" type="text/css">
+
+<style>
+/*
+table.tablesorter tbody {
+    height: 250px;
+    overflow: auto;
+}
+*/
+
+
+th.headerSortUp {
+	background-image: url(../img/small_asc.gif);
+	background-color: #3399FF;
+}
+
+
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 9pt;
+	width: 60%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 9pt;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+function reload(){
+   var form = document.forms['client_manager'];
+   var index = form['MANAGER_ID'].options.selectedIndex;
+   var value = form['MANAGER_ID'].options[index].value;
+
+   form.elements['EMPLOYEE_ID'].value = value;
+
+   form.submit();
+}
+
+
+function detail( client_id ){
+   var form = document.forms['client_manager'];
+   form.elements['CLIENT_ID'].value = client_id;
+   form.action = 'revenueByClientReport.php';
+   form.submit();
+}
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+
+function reload2(){
+   var form = document.forms['client_manager'];
+   var index = form['MANAGER_ID'].options.selectedIndex;
+   var value = form['MANAGER_ID'].options[index].value;
+
+   var gindex = form['group_by'].options.selectedIndex;
+   var gvalue = form['group_by'].options[gindex].value;
+
+   form.elements['EMPLOYEE_ID'].value = value;
+   form.elements['GROUP_BY_ID'].value = gvalue;
+
+   form.submit();
+}
+
+
+function detail( client_id ){
+   var form = document.forms['client_manager'];
+   form.elements['CLIENT_ID'].value = client_id;
+   form.action = 'revenueByClientReportDetail.php';
+   form.submit();
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+
+<body>
+
+
+	<div class="maincontainer">
+    	<!-- robots content="none" -->
+<style type="text/css">
+	img.logo {
+		border:0;
+		padding-top:0px;
+		padding-left:16px;;
+		padding-right:0;
+		padding-bottom:18px;;
+		margin:0;
+		margin-top:20px;
+		float:left;
+	}
+	
+	div.headerbox {
+		margin:0;
+		padding:0;
+	}
+	
+	div.top_nav {
+	float:right;
+	font-size:.85em;
+	color:#3e3e3e;
+	margin-top: 8px;
+	margin-right: 12px;
+	margin-bottom: 0px;
+	margin-left: 150px;
+	padding: 0px;
+	width:28em;
+} 
+div.top_nav a, div.top_nav a:visited {color:#3e3e3e; text-decoration:none;}
+div.top_nav a:hover, div.top_nav a:visited:hover {color:#005692;}
+div.top_nav ul {
+	margin:0px;
+	padding-top: 0px;
+	float:right;
+}
+div.top_nav ul li {
+	display:inline;
+	border-right:1px solid #3e3e3e;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+} 
+div.top_nav ul li.last {border-right:none;}
+
+p.update {
+	float:right;
+	margin:0;
+	padding-top:13px;
+	padding-right:5px;
+	padding-left:0;
+	padding-bottom:0;
+	font-size:.9em;
+}
+</style>
+
+     <div class="headerbox">
+        <img src="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/img/logo_novantas_portal.jpg" alt="Novantas Portal" class="logo">
+        <div class="top_nav">
+        <ul>
+          <li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/faq.php?current_page=jobs&current_sub_page=revenueByClientReport">FAQ</a></li>
+	  <li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/changpwd.php">Change Password</a></li>
+          <li class="last"><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/logout.php">Logout</a></li>
+        </ul>
+
+<!--
+        <p class="update">Last updated: -->
+          <p></p>
+        </div>
+    </div>
+
+<!-- /robots -->
+
+<!-- robots content="none" -->
+<div class="nav_container">
+<ul id="MenuBar1" class="MenuBarHorizontal">
+
+
+
+
+<li class="top"><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/dashboard.php?current_page=dashboard&current_sub_page=dashboard">Dashboard</a>
+	<ul>
+           <li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/dashboard.php?current_page=dashboard&current_sub_page=dashboard">SRR Jobs</a></li>
+           <li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/dashboard.php?current_page=dashboard&current_sub_page=job_allocations">SRR Credit Allocations</a></li>
+	   <li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/staffing_dashboard.php?current_page=dashboard&current_sub_page=personal_billability">SRR Billability</a></li>
+           	</ul>
+</li>
+<li class="top"><a class="currentpage" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/jobReport.php?current_page=jobs&current_sub_page=job_reports">Jobs Financials</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/jobReport.php?current_page=jobs&current_sub_page=job_reports">Job Reports</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/openToBill.php?current_page=jobs&current_sub_page=open_to_bill">Behind on Invoicing</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/accountsReceivable.php?current_page=jobs&current_sub_page=accountsReceivable">Accounts Receivables</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/accountsReceivable2.php?current_page=jobs&current_sub_page=accountsReceivable">Accounts Receivables Test</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/jobsSummary.php?current_page=jobs&current_sub_page=jobsSummary&project_status=A">Sold Jobs Summary</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/partnerProduction.php?current_page=jobs&current_sub_page=partnerProduction">MD Production</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/creditAllocations.php?current_page=jobs&current_sub_page=job_allocations">Credit Allocations</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.php?current_page=jobs&current_sub_page=revenueByClientReport">Revenue By Client</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByOfferingReport.php?current_page=jobs&current_sub_page=revenueByOfferingReport">Revenue By Offering</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueMatrixReport.php?current_page=jobs&current_sub_page=revenueMatrixReport">Revenue Matrix</a></li></ul></li><li class="top"><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/staffingReport.php?current_page=staffing&current_sub_page=staffing">Staffing</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/staffingReport.php?current_page=staffing&current_sub_page=staffing">Staffing Report</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/staffingHistory.php?current_page=staffing&current_sub_page=staffingHistory">Staffing History Report</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/consultingRates.php?current_page=staffing&current_sub_page=rates">Consulting Rates</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/billabilitySummary.php?current_page=staffing&current_sub_page=billability_summary">Billability Summary</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/timeSheetReport.php?current_page=staffing&current_sub_page=clientTimeSheetReport">Timesheet Report for Client Distribution</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/ISstaffingReport.php?current_page=staffing&current_sub_page=ISstaffing">Tech Staffing</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/ISstaffingHistory.php?current_page=staffing&current_sub_page=ISstaffingHistory">Tech Staffing History</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/uploadPeopleTrak.php?current_page=staffing&current_sub_page=uploadPeopleTrak">Upload PeopleTrak Data</a></li></ul></li><li><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.html#">Revenue Outlook</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueOutlook2.php?current_page=revenue_outlook&current_sub_page=leaders&business_unit_id=1">All Business Units</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueOutlook2.php?current_page=revenue_outlook&current_sub_page=leaders&business_unit_id=2">Customer Value Management</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueOutlook2.php?current_page=revenue_outlook&current_sub_page=leaders&business_unit_id=3">Productivity and Performance Management</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueOutlook2.php?current_page=revenue_outlook&current_sub_page=leaders&business_unit_id=4">Solutions</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueOutlook2.php?current_page=revenue_outlook&current_sub_page=leaders&business_unit_id=5">Research</a></li></ul></li><li><a class="MenuBarItemSubmenu" href="">Departments</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=departments&current_sub_page=tech">Technology</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/legal.php?current_page=departments&current_sub_page=legal">Legal</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/compliance.php?current_page=departments&current_sub_page=compliance">Project Compliance</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/employee_compliance.php?current_page=departments&current_sub_page=employee_compliance">Employee Compliance</a></li></ul></li><li><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.html#">Firm Documents</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=corporate_documents&current_sub_page=partners">Managing Directors</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=corporate_documents&current_sub_page=practice_leaders">Leadership Team</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=corporate_documents&current_sub_page=members">Members</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=corporate_documents&current_sub_page=board">Board</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=corporate_documents&current_sub_page=ceo">CEO</a></li></ul></li><li><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.html#">Business Units</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=business_units_docs&current_sub_page=client_plans_docs">Client plans</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=business_units_docs&current_sub_page=customer_value_man_docs">Customer Value Management</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=business_units_docs&current_sub_page=productivity_performance_docs">Productivity and Performance Management</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=business_units_docs&current_sub_page=solutions_docs">Solutions</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/documents.php?current_page=business_units_docs&current_sub_page=research_docs">Research</a></li></ul></li><li><a class="MenuBarItemSubmenu" href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.html#">Portal Administration</a><ul><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=userManagement">Update Permissions</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=jobReportsManagement">Update Job Reports</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=updateRevEx">Manual Job Update</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=personalBillability">Update Billability</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=updateJobAllocations">Update Allocations</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=updateSoldJobsSummary">Update Sold Jobs</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/admin.php?current_page=admin&current_sub_page=updateRevenueOutlook">Update Revenue Outlook</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/updateAR.php?current_page=admin&current_sub_page=updateAR">Update AR</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/upload_YTD_TimeExp.php?current_page=admin&current_sub_page=updateTimeSheetExp">Update YTD Timesheet Expenses</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/businessUnitForm.php?current_page=admin&current_sub_page=updateBusinessUnits">Update Business Units</a></li><li><a href="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/clientCategoryForm.php?current_page=admin&current_sub_page=updateClientCategories">Update Clients</a></li></ul></li></ul></div>
+
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"ssi/SpryAssets/SpryMenuBarDownHover.gif", imgRight:"ssi/SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+  <!-- /robots -->
+
+     	
+      
+      <div class="colmask threecol">
+          <div class="main_box">
+				 <!-- <h1>Steve Reid Dashboard</h1> -->
+           <h2 style="padding-top:1.5em;"> Jobs Financials / Revenue By Client&nbsp;&nbsp;&nbsp;<span style="font-size: .87em;color:#003399;" class="update">(Last Update: 10/02/2013 03:47:04 PM by EMY)</span>
+ </h2> 
+
+
+	    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<form name="client_manager" action="file:///C:/Users/ocohen/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.Outlook/28CVM2ZR/revenueByClientReport.php" method="POST">
+<label class="upload">Client Manager:&nbsp;<select class="dropdown" name="MANAGER_ID" onchange="javascript:reload();">
+<option value="0">ALL CLIENTS</option>
+<option value="65">Cutler, Wayne</option>
+<option value="355">Demos, Darryl</option>
+<option value="37">Dinkin, Les</option>
+<option value="265">Josefowicz, Matt</option>
+<option value="7">Kaytes, Dave</option>
+<option value="62">Meleis, Sherief</option>
+<option value="236">Rice, Mike</option>
+<option value="367">Smith, Greg</option>
+<option value="52">Spitler, Rick</option>
+<option value="278">Vokes, Robert</option>
+
+</select>
+</label>
+<input type="hidden" name="EMPLOYEE_ID" value="">
+<input type="hidden" name="GROUP_BY_ID" value="">
+<input type="hidden" name="CLIENT_ID" value="">
+<input type="hidden" name="topNavTitle" value="Jobs Financials">
+<input type="hidden" name="subNavTitle" value="Revenue By Client   &lt;span style=&#39;font-size: .87em;color:#003399;&#39; class=&#39;update&#39;&gt;(Last Update: 10/02/2013 03:47:04 PM by EMY)&lt;/span&gt;
+">
+<input type="hidden" name="current_page" value="jobs">
+<input type="hidden" name="current_sub_page" value="revenueByClientReport">
+            <div class="xxscroll">
+
+          <div class="scroll">
+
+            <table id="myTable" class="tablesorter">
+              <thead>
+                <tr>
+		<th style="text-align:center; #336699 1px;" title="Client Category">&nbsp;CC</th>
+<th style="text-align:center; #336699 1px;">Client</th>
+<th class="{sorter: &#39;numeric&#39;}" style="text-align:center; #336699 1px;">Plan'13 revenue</th>
+<th style="text-align:center; #336699 1px;">YTD<br>revenue</th>
+<th style="text-align:center; #336699 1px;">Sold but<br>not yet<br>earned</th>
+<th style="text-align:center; #336699 1px;">Total YTD Sales</th>
+<th style="text-align:center; #336699 1px;">Probability<br>adjusted<br>proposals</th>
+<th style="text-align:center; #336699 1px;">Unadjusted proposals</th>
+<th style="text-align:center; #336699 1px;">Outlook</th>
+<th style="text-align:center; #336699 1px;">YTD<br>revenue<br>vs<br>YTD&nbsp;plan</th>
+<th style="text-align:center; #336699 1px;">Outlook<br>vs<br>Plan'13</th>
+<th style="text-align:center; #336699 1px;">Lost Proposals</th>
+<th style="text-align:center; #336699 1px;">Effectiveness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><span style="display:none;">10</span>
+C</td><td nowrap="" id="client_name"><a href="javascript:detail(52);"><span>PNC Bank </span></a></td><td align="right"><span>4,000,000</span></td><td align="right"><span>2,093,042</span></td><td align="right"><span>794,251</span></td><td align="right"><span>2,887,293</span></td><td align="right"><span>83,733</span></td><td align="right"><span>500,000</span></td><td align="right"><span>2,971,026</span></td><td align="right"><span>68%</span></td><td align="right"><span>74%</span></td><td align="right"><span>375,000</span></td><td align="right"><span>77</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">10</span>
+C</td><td nowrap="" id="client_name"><a href="javascript:detail(66);"><span>Toronto Dominion Canada Trust</span></a></td><td align="right"><span>3,500,000</span></td><td align="right"><span>1,559,777</span></td><td align="right"><span>401,741</span></td><td align="right"><span>1,961,518</span></td><td align="right"><span>127,575</span></td><td align="right"><span>2,023,750</span></td><td align="right"><span>2,089,093</span></td><td align="right"><span>57%</span></td><td align="right"><span>59%</span></td><td align="right"><span>785,000</span></td><td align="right"><span>41</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">10</span>
+C</td><td nowrap="" id="client_name"><a href="javascript:detail(38);"><span>Huntington Bank</span></a></td><td align="right"><span>3,000,000</span></td><td align="right"><span>917,860</span></td><td align="right"><span>374,216</span></td><td align="right"><span>1,292,076</span></td><td align="right"><span>7,356</span></td><td align="right"><span>95,000</span></td><td align="right"><span>1,299,432</span></td><td align="right"><span>39%</span></td><td align="right"><span>43%</span></td><td align="right"><span>101,624</span></td><td align="right"><span>87</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">10</span>
+C</td><td nowrap="" id="client_name"><a href="javascript:detail(17);"><span>Bank of Nova Scotia</span></a></td><td align="right"><span>3,000,000</span></td><td align="right"><span>357,008</span></td><td align="right"><span>17,742</span></td><td align="right"><span>374,750</span></td><td align="right"><span>282,929</span></td><td align="right"><span>1,515,000</span></td><td align="right"><span>657,679</span></td><td align="right"><span>15%</span></td><td align="right"><span>21%</span></td><td align="right"><span>1,130,000</span></td><td align="right"><span>12</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">10</span>
+C</td><td nowrap="" id="client_name"><a href="javascript:detail(80);"><span>Bank North</span></a></td><td align="right"><span>2,500,000</span></td><td align="right"><span>1,480,815</span></td><td align="right"><span>340,774</span></td><td align="right"><span>1,821,589</span></td><td align="right"><span>249,826</span></td><td align="right"><span>4,670,000</span></td><td align="right"><span>2,071,415</span></td><td align="right"><span>77%</span></td><td align="right"><span>82%</span></td><td align="right"><span>0</span></td><td align="right"><span>28</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(6);"><span>Wells Fargo</span></a></td><td align="right"><span>2,500,000</span></td><td align="right"><span>2,756,940</span></td><td align="right"><span>634,030</span></td><td align="right"><span>3,390,970</span></td><td align="right"><span>377,000</span></td><td align="right"><span>950,000</span></td><td align="right"><span>3,767,970</span></td><td align="right"><span>143%</span></td><td align="right"><span>150%</span></td><td align="right"><span>0</span></td><td align="right"><span>78</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(16);"><span>Bank of Montreal</span></a></td><td align="right"><span>1,500,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>200,750</span></td><td align="right"><span>1,135,000</span></td><td align="right"><span>200,750</span></td><td align="right"><span>0%</span></td><td align="right"><span>13%</span></td><td align="right"><span>275,000</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(26);"><span>Citizens</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>669,992</span></td><td align="right"><span>152,700</span></td><td align="right"><span>822,692</span></td><td align="right"><span>35,000</span></td><td align="right"><span>175,000</span></td><td align="right"><span>857,692</span></td><td align="right"><span>69%</span></td><td align="right"><span>68%</span></td><td align="right"><span>450,000</span></td><td align="right"><span>57</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(126);"><span>American Express</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>260,000</span></td><td align="right"><span>0</span></td><td align="right"><span>260,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>260,000</span></td><td align="right"><span>27%</span></td><td align="right"><span>20%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(156);"><span>JP Morgan Chase</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>1</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(402);"><span>National Bank of Canada</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(99);"><span>M &amp; T Bank</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>1,100,215</span></td><td align="right"><span>186,049</span></td><td align="right"><span>1,286,264</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>1,286,264</span></td><td align="right"><span>114%</span></td><td align="right"><span>102%</span></td><td align="right"><span>150,000</span></td><td align="right"><span>90</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(82);"><span>Capital One Bank</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>1</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(335);"><span>Rabobank USA</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>556,832</span></td><td align="right"><span>17,500</span></td><td align="right"><span>574,332</span></td><td align="right"><span>17,500</span></td><td align="right"><span>325,000</span></td><td align="right"><span>591,832</span></td><td align="right"><span>57%</span></td><td align="right"><span>47%</span></td><td align="right"><span>2,025,000</span></td><td align="right"><span>20</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(209);"><span>Regions Bank</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>779,763</span></td><td align="right"><span>147,679</span></td><td align="right"><span>927,442</span></td><td align="right"><span>10,000</span></td><td align="right"><span>350,000</span></td><td align="right"><span>937,442</span></td><td align="right"><span>81%</span></td><td align="right"><span>74%</span></td><td align="right"><span>750,004</span></td><td align="right"><span>46</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(25);"><span>CIBC Bank</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>1,125,000</span></td><td align="right"><span>1,490,000</span></td><td align="right"><span>1,125,000</span></td><td align="right"><span>0%</span></td><td align="right"><span>90%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(184);"><span>Discover </span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>497,326</span></td><td align="right"><span>70,981</span></td><td align="right"><span>568,307</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>568,307</span></td><td align="right"><span>51%</span></td><td align="right"><span>45%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(4);"><span>Citibank</span></a></td><td align="right"><span>1,250,000</span></td><td align="right"><span>305,782</span></td><td align="right"><span>0</span></td><td align="right"><span>305,782</span></td><td align="right"><span>212,500</span></td><td align="right"><span>425,000</span></td><td align="right"><span>518,282</span></td><td align="right"><span>31%</span></td><td align="right"><span>41%</span></td><td align="right"><span>1</span></td><td align="right"><span>42</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(400);"><span>Advance America</span></a></td><td align="right"><span>750,000</span></td><td align="right"><span>799,162</span></td><td align="right"><span>838</span></td><td align="right"><span>800,000</span></td><td align="right"><span>-300,000</span></td><td align="right"><span>375,000</span></td><td align="right"><span>500,000</span></td><td align="right"><span>138%</span></td><td align="right"><span>66%</span></td><td align="right"><span>0</span></td><td align="right"><span>68</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(348);"><span>Umpqua</span></a></td><td align="right"><span>500,000</span></td><td align="right"><span>105,172</span></td><td align="right"><span>75,324</span></td><td align="right"><span>180,496</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>180,496</span></td><td align="right"><span>27%</span></td><td align="right"><span>36%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(37);"><span>Harris Bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">20</span>
+T</td><td nowrap="" id="client_name"><a href="javascript:detail(350);"><span>First Niagara</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>254,000</span></td><td align="right"><span>520,000</span></td><td align="right"><span>254,000</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(406);"><span>Twin Cities Financial Bank</span></a></td><td align="right"><span>600,000</span></td><td align="right"><span>941,128</span></td><td align="right"><span>98,950</span></td><td align="right"><span>1,040,077</span></td><td align="right"><span>198,353</span></td><td align="right"><span>480,000</span></td><td align="right"><span>1,238,430</span></td><td align="right"><span>203%</span></td><td align="right"><span>206%</span></td><td align="right"><span>0</span></td><td align="right"><span>68</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(11);"><span>Ameritrade</span></a></td><td align="right"><span>500,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(398);"><span>D+H</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>800,680</span></td><td align="right"><span>462</span></td><td align="right"><span>801,142</span></td><td align="right"><span>133,825</span></td><td align="right"><span>650,000</span></td><td align="right"><span>934,967</span></td><td align="right"><span>346%</span></td><td align="right"><span>311%</span></td><td align="right"><span>0</span></td><td align="right"><span>55</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(127);"><span>Bank of the West</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>843,926</span></td><td align="right"><span>476,074</span></td><td align="right"><span>1,320,000</span></td><td align="right"><span>222,042</span></td><td align="right"><span>674,491</span></td><td align="right"><span>1,542,042</span></td><td align="right"><span>365%</span></td><td align="right"><span>514%</span></td><td align="right"><span>0</span></td><td align="right"><span>66</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(131);"><span>US Bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>95,000</span></td><td align="right"><span>55,000</span></td><td align="right"><span>150,000</span></td><td align="right"><span>90,000</span></td><td align="right"><span>700,000</span></td><td align="right"><span>240,000</span></td><td align="right"><span>41%</span></td><td align="right"><span>80%</span></td><td align="right"><span>1,200,000</span></td><td align="right"><span>7</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(105);"><span>SunTrust</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>33,350</span></td><td align="right"><span>0</span></td><td align="right"><span>33,350</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>33,350</span></td><td align="right"><span>14%</span></td><td align="right"><span>11%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(352);"><span>Canadian Western Bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>419,123</span></td><td align="right"><span>1,500,000</span></td><td align="right"><span>419,123</span></td><td align="right"><span>0%</span></td><td align="right"><span>139%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(371);"><span>Comerica</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>125,000</span></td><td align="right"><span>125,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>125,000</span></td><td align="right"><span>0%</span></td><td align="right"><span>41%</span></td><td align="right"><span>150,000</span></td><td align="right"><span>45</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(282);"><span>Blackstone Management Partners LLC</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(383);"><span>CUNA Mutual Group</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(133);"><span>Fifth Third Bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>290,000</span></td><td align="right"><span>580,000</span></td><td align="right"><span>290,000</span></td><td align="right"><span>0%</span></td><td align="right"><span>96%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(39);"><span>Key Bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>254,960</span></td><td align="right"><span>83,235</span></td><td align="right"><span>338,195</span></td><td align="right"><span>42,500</span></td><td align="right"><span>85,000</span></td><td align="right"><span>380,695</span></td><td align="right"><span>110%</span></td><td align="right"><span>126%</span></td><td align="right"><span>0</span></td><td align="right"><span>80</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(385);"><span>Jackson Hewitt</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>50,000</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(118);"><span>Mastercard</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(408);"><span>Manulife bank</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>80,259</span></td><td align="right"><span>2,447</span></td><td align="right"><span>82,706</span></td><td align="right"><span>60,000</span></td><td align="right"><span>120,000</span></td><td align="right"><span>142,706</span></td><td align="right"><span>34%</span></td><td align="right"><span>47%</span></td><td align="right"><span>0</span></td><td align="right"><span>41</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(334);"><span>ATB Financial</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(289);"><span>RBC USA</span></a></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">30</span>
+S</td><td nowrap="" id="client_name"><a href="javascript:detail(386);"><span>Great Western Bank</span></a></td><td align="right"><span>100,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(411);"><span>First Citizens Bank</span></a></td><td align="right"><span>1,000,000</span></td><td align="right"><span>927,157</span></td><td align="right"><span>157,932</span></td><td align="right"><span>1,085,089</span></td><td align="right"><span>12,686</span></td><td align="right"><span>100,000</span></td><td align="right"><span>1,097,775</span></td><td align="right"><span>120%</span></td><td align="right"><span>109%</span></td><td align="right"><span>0</span></td><td align="right"><span>92</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(64);"><span>TIAA CREF</span></a></td><td align="right"><span>600,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(349);"><span>City National</span></a></td><td align="right"><span>250,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>300,000</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(360);"><span>Iberia Bank</span></a></td><td align="right"><span>200,000</span></td><td align="right"><span>150,300</span></td><td align="right"><span>0</span></td><td align="right"><span>150,300</span></td><td align="right"><span>62,500</span></td><td align="right"><span>125,001</span></td><td align="right"><span>212,800</span></td><td align="right"><span>97%</span></td><td align="right"><span>106%</span></td><td align="right"><span>150,000</span></td><td align="right"><span>35</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(249);"><span>State Farm</span></a></td><td align="right"><span>125,000</span></td><td align="right"><span>125,000</span></td><td align="right"><span>0</span></td><td align="right"><span>125,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>125,000</span></td><td align="right"><span>130%</span></td><td align="right"><span>100%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(393);"><span>Amsher</span></a></td><td align="right"><span>120,000</span></td><td align="right"><span>96,354</span></td><td align="right"><span>30,000</span></td><td align="right"><span>126,354</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>126,354</span></td><td align="right"><span>104%</span></td><td align="right"><span>105%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(308);"><span>The Clearinghouse Org</span></a></td><td align="right"><span>100,000</span></td><td align="right"><span>251,509</span></td><td align="right"><span>0</span></td><td align="right"><span>251,509</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>251,509</span></td><td align="right"><span>326%</span></td><td align="right"><span>251%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(364);"><span>NACHA</span></a></td><td align="right"><span>75,000</span></td><td align="right"><span>165,620</span></td><td align="right"><span>0</span></td><td align="right"><span>165,620</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>165,620</span></td><td align="right"><span>287%</span></td><td align="right"><span>220%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(413);"><span>Eastern Bank</span></a></td><td align="right"><span>50,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>560,000</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(2);"><span>Bank Of America</span></a></td><td align="right"><span>50,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>3,759</span></td><td align="right"><span>70,000</span></td><td align="right"><span>3,759</span></td><td align="right"><span>0%</span></td><td align="right"><span>7%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(407);"><span>First Tennessee/First Horizon</span></a></td><td align="right"><span>50,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(390);"><span>Credit Registry</span></a></td><td align="right"><span>40,000</span></td><td align="right"><span>20,000</span></td><td align="right"><span>0</span></td><td align="right"><span>20,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>20,000</span></td><td align="right"><span>65%</span></td><td align="right"><span>50%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(410);"><span>HawaiiUSA FCU</span></a></td><td align="right"><span>35,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(384);"><span>First National Bank Waupaca</span></a></td><td align="right"><span>25,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(412);"><span>First National Bank of Omaha</span></a></td><td align="right"><span>25,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>90,000</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(345);"><span>Ing Canada</span></a></td><td align="right"><span>20,000</span></td><td align="right"><span>19,967</span></td><td align="right"><span>33</span></td><td align="right"><span>20,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>20,000</span></td><td align="right"><span>129%</span></td><td align="right"><span>100%</span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(70);"><span>Washington Mutual</span></a></td><td align="right"><span>80</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(117);"><span>Synovus</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>240,000</span></td><td align="right"><span>800,000</span></td><td align="right"><span>240,000</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(236);"><span>Zions Bank</span></a></td><td align="right"><span>0</span></td><td align="right"><span>635,340</span></td><td align="right"><span>0</span></td><td align="right"><span>635,340</span></td><td align="right"><span>165,001</span></td><td align="right"><span>530,001</span></td><td align="right"><span>800,341</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>1</span></td><td align="right"><span>55</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(244);"><span>Private Bank</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>30,000</span></td><td align="right"><span>60,000</span></td><td align="right"><span>30,000</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(370);"><span>Associated Bank</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>-79,994</span></td><td align="right"><span>400,000</span></td><td align="right"><span>-79,994</span></td><td align="right"><span>0%</span></td><td align="right"><span>0%</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(290);"><span>Union Bank</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>275,000</span></td><td align="right"><span>275,000</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>275,000</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(356);"><span>First Commonwealth Bank</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>2,500</span></td><td align="right"><span>5,000</span></td><td align="right"><span>2,500</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(395);"><span>Rockland Trust</span></a></td><td align="right"><span>0</span></td><td align="right"><span>124,889</span></td><td align="right"><span>40,000</span></td><td align="right"><span>164,889</span></td><td align="right"><span>20,000</span></td><td align="right"><span>100,000</span></td><td align="right"><span>184,889</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>62</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(401);"><span>Innovis</span></a></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>3</span></td><td align="right"><span>100,000</span></td><td align="right"><span>3</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>0</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(409);"><span>GE Capital</span></a></td><td align="right"><span>0</span></td><td align="right"><span>121,239</span></td><td align="right"><span>0</span></td><td align="right"><span>121,239</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>121,239</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(414);"><span>Equifax</span></a></td><td align="right"><span>0</span></td><td align="right"><span>160,377</span></td><td align="right"><span>0</span></td><td align="right"><span>160,377</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>160,377</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+<tr>
+<td style="text-align:center;"><span style="display:none;">40</span>
+O</td><td nowrap="" id="client_name"><a href="javascript:detail(415);"><span>Angelo,Gordon &amp; Co.</span></a></td><td align="right"><span>0</span></td><td align="right"><span>22,723</span></td><td align="right"><span>0</span></td><td align="right"><span>22,723</span></td><td align="right"><span>0</span></td><td align="right"><span>0</span></td><td align="right"><span>22,723</span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span><span style="color:red;">!!!</span></span></td><td align="right"><span>0</span></td><td align="right"><span>100</span>%</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"></td><td style="text-align:left;border-top: 2px solid #D8D8D8;">&nbsp;<b>Revenue Target Plug</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>-5,915,080</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>0</b></td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"></td><td style="text-align:left;border-top: 2px solid #D8D8D8;">&nbsp;<b>TOTALS</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>37,850,000</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>20,109,463</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>4,557,958</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>24,667,421</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>4,595,467</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>21,628,244</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>29,262,889</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>69%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>77%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>8,541,631</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;"><b>45%</b></td></tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="text-align:right;border-top: 2px solid #D8D8D8;"></td><td style="text-align:left;border-top: 2px solid #D8D8D8;">&nbsp;<b>Research</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8;">5,850,000</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">3,483,051</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">0</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">3,483,051</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">10,000</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">50,000</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">3,493,051</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">77%</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">59%</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">750,004</td><td style="text-align:right;border-top: 2px solid #D8D8D8;">80%</td></tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"></td><td style="text-align:left;border-top: 2px solid #D8D8D8; font-weight:bold;">&nbsp;<b>TOTALS with Research</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>43,700,000</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>23,592,514</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>4,557,958</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>28,150,472</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>4,605,467</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>21,678,244</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>32,755,940</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>70%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>74%</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>9,291,635</b></td><td style="text-align:right;border-top: 2px solid #D8D8D8; font-weight:bold;"><b>48%</b></td></tr>
+</tfoot>
+</table>
+
+</div>
+<br>
+<br>
+&nbsp;
+ 
+            
+       
+        </div></form>
+			</div>
+            </div>
+	</div>
+
+        
+
+<script type="text/javascript" id="js">
+$(document).ready(function()
+        {
+
+        // add parser through the tablesorter addParser method
+        $.tablesorter.addParser({
+                // set a unique id
+                id: 'numbers',
+                is: function(s) {
+                        // return false so this parser is not auto detected
+                        return false;
+                },
+                format: function(s) {
+                        // format your data for normalization
+                        return parseFloat(s.replace(/,/g,''));
+                },
+                // set type, either numeric or text
+                type: 'numeric'
+        });
+
+        $(function() {
+                $("#myTable").tablesorter({
+                        headers: {
+                                2: { sorter:'numbers' },
+                                3: { sorter:'numbers' },
+                                4: { sorter:'numbers' },
+                                5: { sorter:'numbers' },
+                                6: { sorter:'numbers' } 
+                        },
+                	sortList: [[0,0],[2,1]],
+                        //widgets: [ 'uitheme', 'zebra', 'stickyHeaders', 'filter' ],
+                        widgets: [ 'uitheme', 'zebra', 'stickyHeaders' ],
+			//widgets: ['zebra'],
+                        widgetOptions: {
+
+                        // css class name applied to the sticky header row (tr)
+                        stickyHeaders : 'tablesorter-stickyHeader',
+
+                        // adding zebra striping, using content and default styles - the ui css removes the background from default
+                        // even and odd class names included for this demo to allow switching themes
+                        zebra   : ["ui-widget-content even", "ui-state-default odd"],
+
+                        // use uitheme widget to apply defauly jquery ui (jui) class names
+                        // see the uitheme demo for more details on how to change the class names
+                        uitheme : 'jui'
+                }
+
+/*
+                	textExtraction: function(node) {
+                                // extract data from markup and return it
+				alert(node.nodeType);
+                                return node.childNodes[0].nodeValue;
+                                //return node.childNodes[0].innerHTML;
+                	}
+		*/
+                });
+        });
+
+
+
+
+
+
+
+});
+
+</script>
+
+
+
+</body></html>
